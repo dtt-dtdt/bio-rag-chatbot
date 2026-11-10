@@ -18,6 +18,12 @@ TYPE_LABEL = {"답변": "", "조언 제한": "⚠️ 판단은 드리지 않고 
               "거절": "🚫 답변하지 않은 질문이에요", "안내": ""}
 
 
+def data_ready() -> bool:
+    """검색 DB(store/chroma)가 있는지. GitHub 레포에는 데이터를 올리지 않아서, 클라우드 배포본에는 없음"""
+    import config
+    return (config.CHROMA_DIR / "chroma.sqlite3").exists()
+
+
 @st.cache_resource(show_spinner="검색 색인을 불러오는 중… (처음 한 번, 수십 초)")
 def load_chain():
     from rag import chain as rc
@@ -107,6 +113,13 @@ def render_assistant(out: dict, show_analysis: bool = False):
 
 def render():
     """챗봇 화면 전체 (main.py가 부름)"""
+    if not data_ready():                   # 데이터 없는 배포본: 오류 대신 안내만 (질문은 받지 않음)
+        st.title("바이오 특허·뉴스 챗봇")
+        st.warning("이 배포 버전에는 검색 데이터(약 1.6GB)가 없어서 챗봇이 작동하지 않아요. "
+                   "용량·저작권 때문에 데이터는 GitHub에 올리지 않았어요.")
+        st.info("챗봇은 데이터가 있는 로컬 환경에서 실행해요 (README의 '실행 순서' 참고). "
+                "왼쪽에서 **📊 평가 결과**를 누르면 평가 지표를 볼 수 있어요.")
+        return
     filters, show_analysis = sidebar_filters()
     st.title("바이오 특허·뉴스 챗봇")
     st.caption("바이오의약품·바이오헬스케어 특허와 뉴스를 찾아, 출처와 함께 답해 드려요.")

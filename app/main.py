@@ -23,7 +23,8 @@ from app import chat, dashboard  # noqa: E402
 
 st.set_page_config(page_title="바이오 특허·뉴스 챗봇", page_icon="🧬", layout="centered")
 
-page = st.sidebar.radio("화면", ["💬 챗봇", "📊 평가 결과"], label_visibility="collapsed")
+page = st.sidebar.radio("화면", ["💬 챗봇", "📊 평가 결과"], label_visibility="collapsed",
+                        index=0 if chat.data_ready() else 1)   # 데이터 없는 배포본은 평가 결과부터
 st.sidebar.divider()
 if page == "💬 챗봇":
     chat.render()
