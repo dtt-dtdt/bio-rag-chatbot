@@ -1,0 +1,19 @@
+# Python 3.12 기준 (개발 환경의 버전 그대로)
+openai==3.41.0
+python-dotenv==1.2.4
+pandas==3.1.0
+numpy==2.5.4
+scipy==1.18.1
+kiwipiepy==0.24.1
+chromadb==1.5.9
+langchain-core==1.7.1
+langchain-openai==1.7.3
+streamlit==1.67.0
+scikit-learn==1.9.1
+joblib==1.6.0
+# API 서버 (api/server.py, Lovable 등 외부 화면용)
+starlette==1.10.0
+uvicorn==0.54.0
+# notebooks/ 탐색 스크립트용
+openpyxl==3.1.5
+pydantic==2.14.1

@@ -1,0 +1,23 @@
+# 비밀 정보
+.env
+
+# 파이썬·노트북
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# 실행 기록
+logs/
+*.pid
+
+# 데이터·DB (용량이 크고 원천 데이터는 배포하지 않음) — 폴더만 유지
+store/**
+!store/*/
+!store/*/.gitkeep
+
+# 평가 중간 결과 (LLM 응답 캐시·벡터) — 보고서(md)·요약 CSV만 올림
+eval/results/**/*.jsonl
+eval/results/question_vecs*.json
+eval/results/qgen2_*.json

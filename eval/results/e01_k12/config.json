@@ -1,0 +1,24 @@
+{
+ "태그": "e01_k12",
+ "기준": "v5",
+ "변경": {
+  "K_BOTH": 12
+ },
+ "계층": "검색",
+ "가설": "검색 계층: 정답이 8위 바로 밖(q175·q225·q228) → 자료 수 8 → 12",
+ "기준 설정": {
+  "W_VEC": 1.0,
+  "W_BM25": 2.0,
+  "CANDIDATES": 50,
+  "RRF_K": 60,
+  "K_BOTH": 8,
+  "K_PATENT": 8,
+  "K_NEWS": 8,
+  "COMPANY_FILTER": true,
+  "NOISE_FILTER": true,
+  "ANALYZE": true,
+  "BODY_CHARS": 1200,
+  "SYSTEM_PROMPT_FILE": null
+ },
+ "날짜": "2026-11-09 15:39"
+}
